@@ -4,7 +4,7 @@
             Histórico de encomendas
         </h1>
         <p class="mt-4 text-lg">
-            Cliente: {{ $cliente->nome }}
+            Cliente: {{ $cliente->name }}
         </p>
     </div>
 

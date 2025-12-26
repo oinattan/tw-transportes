@@ -6,6 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Client extends Model
 {
+    protected $fillable = [
+        'name',
+        'phone',
+    ];
+
     public function enviados()
     {
         return $this->hasMany(Frete::class, 'remetente_id');
