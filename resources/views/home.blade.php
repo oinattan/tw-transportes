@@ -20,9 +20,9 @@
                      <h2 class="text-xl font-semibold text-gray-900">
                          Histórico de encomendas do Cliente
                      </h2>
-                     <form action="#" method="GET">
+                     <form action="{{ route('frete.historico') }}" method="GET">
                          <div class="relative w-full max-w-md">
-                             <input type="tel" name="telefone" placeholder="Número de telefone"
+                             <input type="tel" name="phone" oninput="aplicarMascaraTelefone(this)" placeholder="Número de telefone"
                                  class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
                                  oninput="aplicarMascaraTelefone(this)" maxlength="15">
                              <button type="submit"
@@ -37,4 +37,22 @@
              <img src="assets/entrega.webp" alt="Placeholder" class="object-cover w-full h-full">
          </div>
      </div>
+     <script>
+        aplicarMascaraTelefone = function (input) {
+            let valor = input.value;
+            valor = valor.replace(/\D/g, "");
+
+            if (valor.length > 0) {
+                valor = "(" + valor;
+            }
+            if (valor.length > 3) {
+                valor = valor.slice(0, 3) + ") " + valor.slice(3);
+            }
+            if (valor.length > 10) {
+                valor = valor.slice(0, 10) + "-" + valor.slice(10);
+            }
+
+            input.value = valor.slice(0, 15);
+        }
+    </script>
  </x-layout>
